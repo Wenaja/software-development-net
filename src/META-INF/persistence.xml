@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="net.software-development" transaction-type="JTA">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<jta-data-source>java:comp/env/jdbc/articlesDB</jta-data-source>
+		<class>model.entitys.Article</class>
+		<class>model.entitys.Category</class>
+		<class>model.entitys.Comment</class>
+		<class>model.entitys.Title</class>
+		<class>model.entitys.User</class>
+	</persistence-unit>
+</persistence>

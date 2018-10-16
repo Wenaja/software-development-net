@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/template/stencil.xhtml">
+	<ui:define name="content">
+		<main id="without-aside">
+			<h4><h:outputText value="{webapps}" /></h4>
+			<p><h:outputText value="Hier entsteht eine neue Internetseite." /></p>
+			<h:graphicImage library="img" name="Java_JDK_download.jpg" width="1024px" />
+			<p><h:outputText value="Java Web Application" /></p>
+		</main>
+	</ui:define>
+</ui:composition>
+</html>

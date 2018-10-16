@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition>		
+		<header>
+		<div class="mp-clear">
+			<div class="header-top">
+				<div class="navi-top">
+					<div class="navi-top-left">
+						<ul class="clear">
+							<li><h:outputText value="Meine persönliche Webseite" /></li>
+						</ul>
+					</div>
+					<div class="navi-top-right">
+						<ul class="clear">
+							<li><h:link value="Anmelden" outcome="/login" /></li>
+							<li><h:outputText value="|" /></li>
+							<li><h:link value="Benutzerkonto erstellen" outcome="/createAccount" /></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="header-bottom">
+				<div class="logo-navi-bottom">
+					<div class="logo">
+						<h:outputLink value="home.jsf"><h:graphicImage library="graphics" name="sd_logo.png" alt="logo" width="468px" /></h:outputLink>
+					</div>
+					<nav>
+						<ul class="not-clear">
+							<li><h:link value="Startseite" outcome="/home.xhtml" /></li>
+							<li><h:link value="Tutorials" outcome="/tutorials.xhtml" /></li>
+							<li><h:link value="Web Anwendungen" outcome="/webApps.xhtml" /></li>
+						</ul>
+					</nav>
+					<div id="special"></div>
+				</div>
+			</div>
+		</div>
+		</header>
+	</ui:composition>
+</html>

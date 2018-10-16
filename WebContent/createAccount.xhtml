@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/template/stencil.xhtml">
+	<ui:define name="content">
+	    <main id="without-aside">
+			<section>
+			<h:form id="login_form" onsubmit="">
+				<div class="textfield">
+					<h:outputLabel value="Vorname: " for="txt_surname" />
+					<h:inputText value="#{newAccountController.user.forename}" id="txt_forename" />
+				</div>
+				<div  class="textfield">
+					<h:outputLabel value="Nachname: " for="txt_surname" />
+					<h:inputText value="#{newAccountController.user.surname}" id="txt_surname" />
+				</div>
+				<div class="textfield">
+					<h:outputLabel value="Benutzername: " for="txt_username"/>
+					<h:inputText value="#{newAccountController.user.username}" id="txt_username" />
+				</div>
+				<div class="textfield">
+					<h:outputLabel value="Email-Adresse: " for="txt_email" />
+					<h:inputText value="#{newAccountController.user.email}" id="txt_email" onfocus="checkUserName()"/>
+				</div>
+				<div class="textfield">
+					<h:outputLabel value="Kennwort: " for="pwd_password1" />
+					<h:inputSecret value="#{newAccountController.user.password}" id="pwd_password1" />
+				</div>
+				<div class="textfield">
+					<h:outputLabel value="Kennwort: " for="pwd_password2" />
+					<h:inputSecret value="#{newAccountController.user.password}" id="pwd_password2" />
+				</div>
+				<div class="submit_btn">
+					<h:commandButton id="create_account" name="create_account" value="submit" action="accountMessage" />
+				</div>
+			</h:form>
+			</section>
+			<h:outputScript library="js" name="validCA.js" />
+		</main>
+	</ui:define>
+</ui:composition>
+</html>
