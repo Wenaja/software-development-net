@@ -6,8 +6,8 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class NewAccountController {
-private User user;
-	
+	private User user = null;
+
 	public NewAccountController() {
 		user = new User();
 	}
@@ -18,5 +18,9 @@ private User user;
 
 	public void setUser(User user) {
 		this.user = user;
-}
+	}
+	
+	public void foo() {
+		
+	}
 }
