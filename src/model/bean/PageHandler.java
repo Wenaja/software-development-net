@@ -1,5 +1,6 @@
 package model.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,11 @@ import model.manager.ArticleEntrance;
 
 @ManagedBean
 @RequestScoped
-public class PageHandler {
+public class PageHandler implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArticleEntrance artEntrancer = new ArticleEntrance();
 	private List<ArticleCompositeObject> records = new ArrayList<ArticleCompositeObject>();
 

@@ -1,6 +1,6 @@
-package control.users;
+package model.dco;
 
-public class User {
+public class UserCompositeObject {
 	private String forename;
 	private String surname;
 	private String username;
@@ -8,7 +8,7 @@ public class User {
 	private String first_password;
 	private String second_password;
 	
-	public User() {
+	public UserCompositeObject() {
 
 	}
 
