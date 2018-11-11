@@ -14,15 +14,15 @@
 			<section>
 				<h:form id="login_form">
 					<div class="textfield">
-						<h:outputLabel value="Benutzername: "/>
-						<h:inputText id="user_login_name" name="user_login_name" value="#{loginController.user.username}"/>
+						<h:outputLabel value="E-Mail: "/>
+						<h:inputText id="user_login_name" name="user_login_name" value="#{loginController.login.email}"/>
 					</div>
 					<div class="textfield">
 						<h:outputLabel value="Kennwort: "/>
-						<h:inputSecret id="user_password" name="user_password" value="#{loginController.user.password}"/>
+						<h:inputSecret id="user_password" name="user_password" value="#{loginController.login.pwd}"/>
 					</div>
 					<div class="submit_btn">
-						<h:commandButton id="btn_login" name="btn_login" value="Anmelden" action="loginMessage" />
+						<h:commandButton id="btn_login" name="btn_login" value="Anmelden" action="#{loginController.makeLogin()}" />
 					</div>
 				</h:form>
 			</section>
