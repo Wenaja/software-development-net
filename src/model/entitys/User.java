@@ -30,7 +30,7 @@ public class User implements Serializable {
 	private Integer id;
 
 	@Column(name="active")
-	private Byte active;
+	private Boolean active;
 
 	@Column(name="email")
 	private String email;
@@ -46,6 +46,9 @@ public class User implements Serializable {
 
 	@Column(name="username")
 	private String username;
+	
+	@Column(name="sessionid")
+	private String sessionID;
 
 	//bi-directional many-to-one association to Comment
 	@OneToMany(mappedBy="user", fetch = FetchType.LAZY)
@@ -62,11 +65,11 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	public Byte getActive() {
+	public Boolean getActive() {
 		return this.active;
 	}
 
-	public void setActive(Byte active) {
+	public void setActive(Boolean active) {
 		this.active = active;
 	}
 
@@ -108,6 +111,14 @@ public class User implements Serializable {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getSessionID() {
+		return sessionID;
+	}
+
+	public void setSessionID(String sessionID) {
+		this.sessionID = sessionID;
 	}
 
 	public Set<Comment> getComments() {
@@ -172,7 +183,7 @@ public class User implements Serializable {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", active=" + active + ", email=" + email + ", forename=" + forename + ", surname="
-				+ surname + ", username=" + username + "]";
+				+ surname + ", username=" + username + ", sessionID=" + sessionID + "]";
 	}
 
 }

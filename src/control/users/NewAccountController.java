@@ -65,7 +65,7 @@ public class NewAccountController implements Serializable{
 			youngUser.setSurname(user.getSurname());
 			youngUser.setUsername(user.getUsername());
 			youngUser.setEmail(user.getEmail());
-			youngUser.setActive(new Byte("0"));
+			youngUser.setActive(new Boolean(false));
 			youngUser.setPwd(user.getSecond_password());
 			
 			em.getTransaction().begin();

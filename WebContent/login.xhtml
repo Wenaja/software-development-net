@@ -13,16 +13,17 @@
 		<main id="without-aside">
 			<section>
 				<h:form id="login_form">
+				<h:messages errorStyle="color:red"/>
 					<div class="textfield">
-						<h:outputLabel value="E-Mail: "/>
+						<h:outputLabel for="user_login_name" value="E-Mail: "/>
 						<h:inputText id="user_login_name" name="user_login_name" value="#{loginController.login.email}"/>
 					</div>
 					<div class="textfield">
-						<h:outputLabel value="Kennwort: "/>
+						<h:outputLabel for="user_password" value="Kennwort: "/>
 						<h:inputSecret id="user_password" name="user_password" value="#{loginController.login.pwd}"/>
 					</div>
 					<div class="submit_btn">
-						<h:commandButton id="btn_login" name="btn_login" value="Anmelden" action="#{loginController.makeLogin()}" />
+						<h:commandButton id="btn_login" name="btn_login" value="Anmelden" action="#{loginController.makeLogin}" />
 					</div>
 				</h:form>
 			</section>
