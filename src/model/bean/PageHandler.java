@@ -7,13 +7,15 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.persistence.EntityManager;
 
 import model.dco.ArticleCompositeObject;
 import model.manager.ArticleEntrance;
+import model.manager.StorageManager;
 
 @ManagedBean
 @RequestScoped
-public class PageHandler implements Serializable{
+public class PageHandler implements Serializable {
 	/**
 	 * 
 	 */
@@ -27,8 +29,10 @@ public class PageHandler implements Serializable{
 
 	@PostConstruct
 	public void initialize() {
-		artEntrancer.initializeEntityManager("net.software-development");
-		artEntrancer.fillRecords(records);
+		// artEntrancer.initializeEntityManager("net.software-development");
+		StorageManager storMag = new StorageManager();
+		EntityManager em = StorageManager.getEntityManager();
+		artEntrancer.fillRecords(records, em);
 	}
 
 	public List<ArticleCompositeObject> getSections() {

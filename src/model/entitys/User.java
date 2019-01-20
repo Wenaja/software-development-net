@@ -47,7 +47,7 @@ public class User implements Serializable {
 	@Column(name="username")
 	private String username;
 	
-	@Column(name="sessionid")
+	@Column(name="session")
 	private String sessionID;
 
 	//bi-directional many-to-one association to Comment

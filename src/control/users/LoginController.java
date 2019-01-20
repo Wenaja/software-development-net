@@ -1,85 +1,71 @@
 package control.users;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
-
 import javax.servlet.http.HttpSession;
 
-import model.dco.LoginTransferObject;
+import control.login.AttSettLogChain;
+import control.login.LoginChain;
+import control.login.StoragerLogChain;
+import control.login.UserFinderLogChain;
+import control.login.exception.LoginFailureException;
 import model.entitys.User;
+import model.manager.StorageManager;
 
-@ManagedBean
+@ManagedBean(name = "login")
 @SessionScoped
-public class LoginController implements Serializable{
+public class LoginController implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	private EntityManagerFactory emf;
-	private EntityManager em;
-	private LoginTransferObject login;
+	private String email;
+	private String pwd;
 
 	public LoginController() {
-		
-	}
-	
-	@PostConstruct
-	public void initialize() {
-		this.login = new LoginTransferObject();
-		this.emf = Persistence.createEntityManagerFactory("net.software-development");
-		this.em = emf.createEntityManager();
-	}
 
-	public LoginTransferObject getLogin() {
-		return login;
-	}
-
-	public void setLogin(LoginTransferObject login) {
-		this.login = login;
 	}
 
 	public String makeLogin() {
-		String email = login.getEmail();
-		String pwd = login.getPwd();
-		
-		
-		TypedQuery<User> query = em.createQuery("SELECT u FROM User u", User.class);
-		List<User> ls = query.getResultList();
-		
-		for(User u : ls) {
-			if(email.equals(u.getEmail()) && pwd.equals(u.getPwd())) {
-				if(!"null".equals(u.getSessionID())) {
-					return "home?faces-redirect=true";
-				}
-				
-				javax.faces.context.FacesContext fc = javax.faces.context.FacesContext.getCurrentInstance();
-				javax.faces.context.ExternalContext ec = fc.getExternalContext();
-				HttpSession session = null;
-				session = (HttpSession)ec.getSession(false);
-				if(session != null) {
-					em.getTransaction().begin();
-					u.setSessionID(session.getId());
-					em.getTransaction().commit();
-				}
-				return "home?faces-redirect=true";
-			}
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		StorageManager storageManager = new StorageManager();
+
+		LoginChain log = new UserFinderLogChain(email, pwd);
+		log.setNextChain(new StoragerLogChain(email, pwd));
+		log.getNextChain().setNextChain(new AttSettLogChain(email, pwd));
+
+		try {
+			log.runChainThrough(storageManager, session, new User());
+		} catch (LoginFailureException e) {
+			// Miss messge
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), "verstehe nicht wozu das hier dient?"));
+			
+			return "login";
 		}
-		
-		// Miss messge
-		FacesContext context = FacesContext.getCurrentInstance();
-		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Loginn fail", "User oder Password is not ok"));
-		
-		return "login";
+
+		return "home";
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 }

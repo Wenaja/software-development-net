@@ -10,20 +10,20 @@ import javax.persistence.Query;
 import model.dco.ArticleCompositeObject;
 
 public class ArticleEntrance {
-	private EntityManager em = null;
+	//private EntityManager em = null;
 
 	public ArticleEntrance() {
 
 	}
 
 	public void initializeEntityManager(String persistenceUnitName) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory(persistenceUnitName);
-		this.em = emf.createEntityManager();
+		//EntityManagerFactory emf = Persistence.createEntityManagerFactory(persistenceUnitName);
+		//this.em = emf.createEntityManager();
 
 	}
 
 	@SuppressWarnings("unchecked")
-	public void fillRecords(List<ArticleCompositeObject> records) {
+	public void fillRecords(List<ArticleCompositeObject> records, EntityManager em) {
 		String s = "IDE";
 		Query query = em
 				.createQuery("SELECT a.category.articlecategory, a.title.caption, a.article FROM Article a");
@@ -40,6 +40,8 @@ public class ArticleEntrance {
 				 */
 
 		}
+		
+		em.close();
 
 	}
 }
