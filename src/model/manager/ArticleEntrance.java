@@ -3,14 +3,19 @@ package model.manager;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import model.dco.ArticleCompositeObject;
+import model.entitys.User;
+import model.exception.NoMatchUserException;
 
-public class ArticleEntrance {
+public class ArticleEntrance implements Touchable {
 	//private EntityManager em = null;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public ArticleEntrance() {
 
@@ -43,5 +48,11 @@ public class ArticleEntrance {
 		
 		em.close();
 
+	}
+
+	@Override
+	public User execute(EntityManager em) throws NoMatchUserException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

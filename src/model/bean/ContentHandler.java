@@ -15,7 +15,7 @@ import model.manager.StorageManager;
 
 @ManagedBean
 @RequestScoped
-public class PageHandler implements Serializable {
+public class ContentHandler implements Serializable {
 	/**
 	 * 
 	 */
@@ -23,7 +23,7 @@ public class PageHandler implements Serializable {
 	private ArticleEntrance artEntrancer = new ArticleEntrance();
 	private List<ArticleCompositeObject> records = new ArrayList<ArticleCompositeObject>();
 
-	public PageHandler() {
+	public ContentHandler() {
 
 	}
 

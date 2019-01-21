@@ -35,9 +35,13 @@ public class StorageManager implements Serializable {
 		try {
 			user = storage.execute(em);
 		} catch (NoMatchUserException e) {
+			if(em.isOpen())
+				em.close();
 			throw new LoginFailureException(e.getMessage());
 		}
 
+		if(em.isOpen())
+			em.close();
 		return user;
 	}
 
