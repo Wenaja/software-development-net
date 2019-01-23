@@ -12,7 +12,7 @@
 		 
 		<main id="without-aside">
 			<section>
-				<ui:repeat var="article" value="#{pageHandler.sections}">
+				<ui:repeat var="article" value="#{contentHandler.sections}">
 					<h:outputText value="#{article.text}" escape="false" />
 				</ui:repeat>
 			</section>

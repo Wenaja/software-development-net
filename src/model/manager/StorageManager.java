@@ -42,6 +42,7 @@ public class StorageManager implements Serializable {
 
 		if(em.isOpen())
 			em.close();
+		
 		return user;
 	}
 

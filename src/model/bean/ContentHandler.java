@@ -9,8 +9,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.persistence.EntityManager;
 
-import model.dco.ArticleCompositeObject;
-import model.manager.ArticleEntrance;
+import model.entitys.Article;
+import model.manager.IDEArticleEntrance;
 import model.manager.StorageManager;
 
 @ManagedBean
@@ -20,8 +20,8 @@ public class ContentHandler implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private ArticleEntrance artEntrancer = new ArticleEntrance();
-	private List<ArticleCompositeObject> records = new ArrayList<ArticleCompositeObject>();
+	private IDEArticleEntrance artEntrancer = new IDEArticleEntrance(new ArrayList<Article>());
+	private List<Article> records = null;
 
 	public ContentHandler() {
 
@@ -32,14 +32,19 @@ public class ContentHandler implements Serializable {
 		// artEntrancer.initializeEntityManager("net.software-development");
 		StorageManager storMag = new StorageManager();
 		EntityManager em = StorageManager.getEntityManager();
-		artEntrancer.fillRecords(records, em);
+		// artEntrancer.fillRecords(new ArrayList<ArticleCompositeObject>(), em);
+		records = artEntrancer.fillRecords(em);
+		
+		if(em.isOpen())
+			em.close();
+		
 	}
 
-	public List<ArticleCompositeObject> getSections() {
+	public List<Article> getSections() {
 		return records;
 	}
 
-	public void setSections(List<ArticleCompositeObject> records) {
+	public void setSections(List<Article> records) {
 		this.records = records;
 	}
 }

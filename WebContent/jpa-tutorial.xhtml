@@ -9,16 +9,16 @@
 
 <ui:composition template="/template/stencil.xhtml">
 	<ui:define name="content">
-		
-		<main id="without-aside">
+	    
+	    <main id="without-aside">
 			<section>
-				<ui:repeat var="content" value="#{contentHandler.sections}">
-					<h:outputText value="#{content.article}" escape="false" />
+				<ui:repeat var="article" value="#{contentHandler.sections}">
+					<h:outputText value="#{article.text}" escape="false" />
 				</ui:repeat>
 			</section>
 		</main>
 		
 	</ui:define>
-
 </ui:composition>
+
 </html>
