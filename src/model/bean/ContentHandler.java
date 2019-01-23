@@ -7,10 +7,12 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.persistence.EntityManager;
 
 import model.entitys.Article;
+import model.manager.ArticleManager;
 import model.manager.IDEArticleEntrance;
+import model.manager.JPAArticleEntrance;
+import model.manager.JSFArticleEntrance;
 import model.manager.StorageManager;
 
 @ManagedBean
@@ -20,8 +22,8 @@ public class ContentHandler implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private IDEArticleEntrance artEntrancer = new IDEArticleEntrance(new ArrayList<Article>());
-	private List<Article> records = null;
+	
+	ArticleManager artMan;
 
 	public ContentHandler() {
 
@@ -29,22 +31,30 @@ public class ContentHandler implements Serializable {
 
 	@PostConstruct
 	public void initialize() {
-		// artEntrancer.initializeEntityManager("net.software-development");
-		StorageManager storMag = new StorageManager();
-		EntityManager em = StorageManager.getEntityManager();
-		// artEntrancer.fillRecords(new ArrayList<ArticleCompositeObject>(), em);
-		records = artEntrancer.fillRecords(em);
+		StorageManager storMan = new StorageManager();
+		artMan = new ArticleManager();
 		
-		if(em.isOpen())
-			em.close();
+	}
+	
+	public List<Article> getIDEArticles() {
+		artMan.setArticleEntrance(new IDEArticleEntrance());
+		
+		return artMan.fillRecords(StorageManager.getEntityManager());
+		
+	}
+	
+	public List<Article> getJSFArticles() {
+		artMan.setArticleEntrance(new JSFArticleEntrance());
+		
+		return artMan.fillRecords(StorageManager.getEntityManager());
+		
+	}
+	
+	public List<Article> getJPAArticles() {
+		artMan.setArticleEntrance(new JPAArticleEntrance());
+		
+		return artMan.fillRecords(StorageManager.getEntityManager());
 		
 	}
 
-	public List<Article> getSections() {
-		return records;
-	}
-
-	public void setSections(List<Article> records) {
-		this.records = records;
-	}
 }
