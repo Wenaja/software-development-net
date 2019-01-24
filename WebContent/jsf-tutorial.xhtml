@@ -10,8 +10,8 @@
 	
 		<main id="without-aside">
 			<section>
-				<ui:repeat var="article" value="#{contentHandler.sections}">
-					<h:outputText value="#{article.text}" escape="false" />
+				<ui:repeat var="pageContent" value="#{contentHandler.JSFArticles}">
+					<h:outputText value="#{pageContent.article}" escape="false" />
 				</ui:repeat>
 			</section>
 		</main>
