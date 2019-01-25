@@ -14,9 +14,9 @@
 				<div class="navi-top">
 					<div class="navi-top-left">
 						<ul class="clear">
-							<li><h:link value="Startseite" outcome="#{pageHandler.writeStartseiteOutcome()}"/> | </li>
-							<li><h:link value="#Tutorials" outcome="#{pageHandler.writeTutorialsOutcome()}"/> | </li>
-							<li><h:link value="Web Applikationen" outcome="#{pageHandler.writeWebAppsOutcome()}"/></li>
+							<li><h:link value="#{pageHandler.writeMenuOneValue()}" outcome="#{pageHandler.putStartseiteOutcome('startseite')}"/> | </li>
+							<li><h:link value="#{pageHandler.writeMenuTwoValue()}" outcome="#{pageHandler.putTutorialsOutcome('tutorials')}"/> | </li>
+							<li><h:link value="#{pageHandler.writeMenuThreeValue()}" outcome="#{pageHandler.putWebAppsOutcome('webApps')}"/></li>
 						</ul>
 					</div>
 					<div class="navi-top-right">
@@ -35,9 +35,9 @@
 					</div>
 					<nav>
 						<ul class="not-clear">
-							<li><h:link value="#{}" outcome="#{}" /></li>
-							<li><h:link value="#{}" outcome="#{}" /></li>
-							<li><h:link value="#{}" outcome="#{}" /></li>
+							<li><h:link value="#{pageHandler.writeSubMenuOneValue()}" outcome="#{pageHandler.writeSubMenuOneOutcome()}" /></li>
+							<li><h:link value="#{pageHandler.writeSubMenuTwoValue()}" outcome="#{pageHandler.writeSubMenuTwoOutcome()}" /></li>
+							<li><h:link value="#{pageHandler.writeSubMenuThreeValue()}" outcome="#{pageHandler.writeSubMenuThreeOutcome()}" /></li>
 						</ul>
 					</nav>
 					<div id="special"></div>

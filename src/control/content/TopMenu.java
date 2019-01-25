@@ -1,6 +1,7 @@
 package control.content;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class TopMenu extends MenuController {
@@ -32,8 +33,14 @@ public class TopMenu extends MenuController {
 
 	@Override
 	public String getValue() {
+		MenuController node = new TopMenu();
+		Iterator<MenuController> iter = menCon.iterator();
 		
-		return null;
+		if(iter.hasNext()) { 
+			node = iter.next();
+		}
+		
+		return node.getValue();
 	}
 
 	@Override

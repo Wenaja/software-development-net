@@ -27,20 +27,18 @@ public class Submenu extends MenuController {
 	}
 	
 	@Override 
-	public MenuController getElement(int index) {
-		return null;
+	public MenuController getElement(int index) throws NotSupportedOperationException {
+		throw new NotSupportedOperationException();
 	}
 
 	@Override
-	public String getValue() {
-		
-		return null;
+	public String getValue() {	
+		return value;
 	}
 
 	@Override
 	public String getOutcome() {
-		
-		return null;
+		return outcome;
 	}
 
 }

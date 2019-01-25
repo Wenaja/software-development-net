@@ -15,7 +15,7 @@ public abstract class MenuController implements Serializable {
 	
 	public abstract void delete(MenuController item) throws NotSupportedOperationException;
 	
-	public abstract MenuController getElement(int index);
+	public abstract MenuController getElement(int index) throws NotSupportedOperationException;
 	
 	public abstract String getValue();
 	
