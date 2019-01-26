@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 @ManagedBean(name = "pageHandler")
 @RequestScoped
@@ -13,77 +15,47 @@ public class PageHandler implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+	private String value;
+	private String outcome;
+	private String loginValue;
+	private String loginOutcome;
+
 	public PageHandler() {
-		
+
 	}
-	
+
 	@PostConstruct
 	public void initialize() {
-		
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+
+		try {
+			value = "Abmelden";
+			outcome = "/userSettings.jsf";
+			loginValue = (String) session.getAttribute("username");
+			loginOutcome = "/userSettings.jsf";
+		} catch(NullPointerException e) {
+			value = "Benutzerkonto erstellen";
+			outcome = "/createAccount.jsf";
+			loginValue = "Anmelden";
+			loginOutcome = "/login.jsf";
+		}
+
 	}
-	
-	public String putStartseiteOutcome(String item) {
-		System.out.println("bin in putStartseiteOutcome " + item);
-		
-		return "/home.jsf";
+
+	public String getValue() {
+		return value;
 	}
-	
-	public String putTutorialsOutcome(String item) {
-		System.out.println("bin in putTutorialsOutcome " + item);
-		
-		return "/ide-tutorial.jsf";
+
+	public String getOutcome() {
+		return outcome;
 	}
-	
-	public String putWebAppsOutcome(String item) {
-		System.out.println("bin in putWebAppsOutcome " + item);
-		
-		return "/webApps.jsf";
+
+	public String getLoginValue() {
+		return loginValue;
 	}
-	
-	public String writeMenuOneValue() {
-		return "Startseite";
-	}
-	
-	public String writeMenuTwoValue() {
-		return "Tutorials";
-	}
-	
-	public String writeMenuThreeValue() {
-		return "Web Applikationen";
-	}
-	
-	public String writeSubMenuOneValue() {
-		System.out.println("bin in writeMenuOneValue");
-		return "Startseite";
-		
-	}
-	
-	public String writeSubMenuTwoValue() {
-		System.out.println("bin in writeMenuTwoValue");
-		return "Tutorials";
-		
-	}
-	
-	public String writeSubMenuThreeValue() {
-		System.out.println("bin in writeMenuThreeValue");
-		return "Web Applikationen";
-		
-	}
-	
-	public String writeSubMenuOneOutcome() {
-		System.out.println("bin in writeMenuOneOutcome");
-		return "/home.jsf";
-	}
-	
-	public String writeSubMenuTwoOutcome() {
-		System.out.println("bin in writeMenuTwoOutcome");
-		return "/ide-tutorial.jsf";
-	}
-	
-	public String writeSubMenuThreeOutcome() {
-		System.out.println("bin in writeMenuThreeOutcome");
-		return "webApps.jsf";
+
+	public String getLoginOutcome() {
+		return loginOutcome;
 	}
 
 }

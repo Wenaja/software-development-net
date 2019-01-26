@@ -14,16 +14,16 @@
 				<div class="navi-top">
 					<div class="navi-top-left">
 						<ul class="clear">
-							<li><h:link value="#{pageHandler.writeMenuOneValue()}" outcome="#{pageHandler.putStartseiteOutcome('startseite')}"/> | </li>
-							<li><h:link value="#{pageHandler.writeMenuTwoValue()}" outcome="#{pageHandler.putTutorialsOutcome('tutorials')}"/> | </li>
-							<li><h:link value="#{pageHandler.writeMenuThreeValue()}" outcome="#{pageHandler.putWebAppsOutcome('webApps')}"/></li>
+							<li><h:link value="Startseite" outcome="/home.jsf"/> | </li>
+							<li><h:link value="Tutorials" outcome="/ide-tutorial.jsf"/> | </li>
+							<li><h:link value="Web Applikationen" outcome="/webApps.jsf"/></li>
 						</ul>
 					</div>
 					<div class="navi-top-right">
 						<ul class="clear">
-							<li><h:link value="Anmelden" outcome="/login" /></li>
+							<li><h:link value="#{pageHandler.loginValue}" outcome="#{pageHandler.loginOutcome}" /></li>
 							<li><h:outputText value="|" /></li>
-							<li><h:link value="Benutzerkonto erstellen" outcome="/createAccount" /></li>
+							<li><h:link value="#{pageHandler.value}" outcome="#{pageHandler.outcome}" /></li>
 						</ul>
 					</div>
 				</div>
@@ -35,9 +35,9 @@
 					</div>
 					<nav>
 						<ul class="not-clear">
-							<li><h:link value="#{pageHandler.writeSubMenuOneValue()}" outcome="#{pageHandler.writeSubMenuOneOutcome()}" /></li>
-							<li><h:link value="#{pageHandler.writeSubMenuTwoValue()}" outcome="#{pageHandler.writeSubMenuTwoOutcome()}" /></li>
-							<li><h:link value="#{pageHandler.writeSubMenuThreeValue()}" outcome="#{pageHandler.writeSubMenuThreeOutcome()}" /></li>
+							<li><h:link value="Startseite" outcome="/home.jsf" /></li>
+							<li><h:link value="Tutorials" outcome="/ide-tutorial.jsf" /></li>
+							<li><h:link value="Web Applikationen" outcome="/webApps.jsf" /></li>
 						</ul>
 					</nav>
 					<div id="special"></div>
