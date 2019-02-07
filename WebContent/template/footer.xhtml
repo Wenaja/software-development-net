@@ -8,7 +8,7 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <ui:composition>
-		<div id="foot" >	
+			
 			<div class="foot-level-one">
 				<div class="foot-level-two">
 					<div class="foot-level-three">
@@ -25,15 +25,15 @@
 			<footer>
 				<div class="footer-level-one">
 					<div class="footer-level-two">
-						<div class="footer-created">
-							<p><h:outputText value="2018 Cologne. Created by Juri Rempel." /></p>
+						<div id="footer-created">
+							<h:outputText value="2018 Cologne. Created by Juri Rempel." />
 						</div>
-						<div class="footer-hosted">
-							<p><h:outputText value="Hosted by " /><h:outputLink value="https://www.inetsolutions.de/">iNETsolutions.de</h:outputLink></p>
+						<div id="footer-hosted">
+							<h:outputText value="Hosted by " /><h:outputLink value="https://www.inetsolutions.de/">iNETsolutions.de</h:outputLink>
 						</div>
 					</div>
 				</div>
 			</footer>
-		</div>
-	</ui:composition>
+		
+</ui:composition>
 </html>

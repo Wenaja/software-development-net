@@ -8,18 +8,16 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <ui:composition>		
-		<header>
-		<div class="mp-clear">
-			<div class="header-top">
-				<div class="navi-top">
-					<div class="navi-top-left">
+
+		<div id="mp-clear">
+			<div id="header-top">
+				<div id="navi-top">
+					<div id="navi-top-left">
 						<ul class="clear">
-							<li><h:link value="Startseite" outcome="/home.jsf"/> | </li>
-							<li><h:link value="Tutorials" outcome="/ide-tutorial.jsf"/> | </li>
-							<li><h:link value="Web Applikationen" outcome="/webApps.jsf"/></li>
+							<li><h:outputText value="Meine persönliche Webseite"/></li>
 						</ul>
 					</div>
-					<div class="navi-top-right">
+					<div id="navi-top-right">
 						<ul class="clear">
 							<li><h:link value="#{pageHandler.loginValue}" outcome="#{pageHandler.loginOutcome}" /></li>
 							<li><h:outputText value="|" /></li>
@@ -28,8 +26,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="header-bottom">
-				<div class="logo-navi-bottom">
+			<div id="header-bottom">
+				<div id="logo-navi-bottom">
 					<div class="logo">
 						<h:outputLink value="home.jsf"><h:graphicImage library="graphics" name="sd_logo.png" alt="logo" width="468px" /></h:outputLink>
 					</div>
@@ -40,10 +38,10 @@
 							<li><h:link value="Web Applikationen" outcome="/webApps.jsf" /></li>
 						</ul>
 					</nav>
-					<div id="special"></div>
+					<div class="special"></div>
 				</div>
 			</div>
 		</div>
-		</header>
+
 	</ui:composition>
 </html>

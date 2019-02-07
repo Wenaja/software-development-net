@@ -1,6 +1,7 @@
 package control;
 
 import java.io.Serializable;
+import java.util.Enumeration;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpSession;
 
 @ManagedBean(name = "pageHandler")
 @RequestScoped
-public class PageHandler implements Serializable {
+public class PageController implements Serializable {
 	/**
 	 * 
 	 */
@@ -20,26 +21,24 @@ public class PageHandler implements Serializable {
 	private String loginValue;
 	private String loginOutcome;
 
-	public PageHandler() {
-
+	public PageController() {
+		this.value = "Benutzerkonto erstellen";
+		this.outcome = "/createAccount.jsf";
+		this.loginValue = "Anmelden";
+		this.loginOutcome = "/login.jsf";
 	}
 
 	@PostConstruct
 	public void initialize() {
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-
-		try {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		
+		if(session.getAttribute("username") != null) {
 			value = "Abmelden";
-			outcome = "/userSettings.jsf";
-			loginValue = (String) session.getAttribute("username");
+			outcome = "/logout.jsf";
+			loginValue = (String)session.getAttribute("username");
 			loginOutcome = "/userSettings.jsf";
-		} catch(NullPointerException e) {
-			value = "Benutzerkonto erstellen";
-			outcome = "/createAccount.jsf";
-			loginValue = "Anmelden";
-			loginOutcome = "/login.jsf";
 		}
-
+		
 	}
 
 	public String getValue() {
