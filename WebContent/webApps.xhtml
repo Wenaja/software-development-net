@@ -9,12 +9,16 @@
 
 <ui:composition template="/template/stencil.xhtml">
 	<ui:define name="content">
-		<main id="without-aside">
-			<h4><h:outputText value="{webapps}" /></h4>
-			<p><h:outputText value="Hier entsteht eine neue Internetseite." /></p>
-			<h:graphicImage library="img" name="Java_JDK_download.jpg" width="1024px" />
-			<p><h:outputText value="Java Web Application" /></p>
-		</main>
+
+		<div class="content">
+			<section>
+				<h4><h:outputText value="{webapps}" /></h4>
+				<p><h:outputText value="Hier entsteht eine neue Internetseite." /></p>
+				<h:graphicImage library="img" name="Java_JDK_download.jpg" width="1024px" />
+				<p><h:outputText value="Java Web Application" /></p>		
+			</section>
+		</div>
+
 	</ui:define>
 </ui:composition>
 </html>

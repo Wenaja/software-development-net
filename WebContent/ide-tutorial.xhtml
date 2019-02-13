@@ -10,13 +10,13 @@
 <ui:composition template="/template/stencil.xhtml">
 	<ui:define name="content">
 		 
-		<main id="without-aside">
+		<div class="content">
 			<section>
 				<ui:repeat var="pageContent" value="#{contentHandler.IDEArticles}">
 					<h:outputText value="#{pageContent.article}" escape="false" />
 				</ui:repeat>
 			</section>
-		</main>
+		</div>
 	</ui:define>
 
 </ui:composition>
