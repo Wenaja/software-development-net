@@ -32,6 +32,7 @@ public class LoginController implements Serializable {
 	}
 
 	public String makeLogin() {
+		System.out.println(pwd);
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		StorageManager storageManager = new StorageManager();
 

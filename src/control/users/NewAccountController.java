@@ -26,11 +26,12 @@ public class NewAccountController implements Serializable{
 	private EntityManager em;
 
 	public NewAccountController() {
-		user = new UserCompositeObject();
+		
 	}
 	
 	@PostConstruct
 	private void initilize() {
+		user = new UserCompositeObject();
 		this.emf = Persistence.createEntityManagerFactory("net.software-development");
 		em = emf.createEntityManager();
 	}
@@ -58,7 +59,17 @@ public class NewAccountController implements Serializable{
 	}
 	
 	public String foo() {
-		if(!isUserExist()) {
+		System.out.println("Vom Formular an den Server angekommen: ");
+		System.out.println("Vorname: " + user.getForename());
+		System.out.println("Nachname: " + user.getSurname());
+		System.out.println("Benutzername: " + user.getUsername());
+		System.out.println("Email: " + user.getEmail());
+		System.out.println("Erstes Kennwort: " + user.getFirst_password());
+		System.out.println("zweites Kennwort: " + user.getSecond_password());
+		
+		return "home";
+		
+		/*if(!isUserExist()) {
 			User youngUser = new User();
 			
 			youngUser.setForename(user.getForename());
@@ -75,7 +86,7 @@ public class NewAccountController implements Serializable{
 			return "NewAccountErgs";
 		}else {
 			return "NewAccountFail";
-		}
+		}*/
 		
 	}
 }

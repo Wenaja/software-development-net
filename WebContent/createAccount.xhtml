@@ -9,40 +9,37 @@
 
 <ui:composition template="/template/stencil.xhtml">
 	<ui:define name="content">
+	
 		<h:outputScript library="js" name="sha256.js" target="head" />
-	    <main id="without-aside">
+		<h:outputScript library="js" name="cfv.js" target="head" />
+		
+	    <div class="content">
 			<section>
 			<span name="message"></span>
 			<h:form id="frm_createNewAccount01" name="frm_createNewAccount" onsubmit="return setupSubmit()" >
 				<div class="textfield">
 					<h:outputLabel value="Vorname: " for="inpf_forename01" /><br />
-					<h:inputText onfocus="validate(this)" value="#{newAccountController.user.forename}" id="inpf_forename01" /><br />
-					<span name="message"></span>
+					<h:inputText onfocus="validate(this)" value="#{newAccountController.user.forename}" id="inpf_forename01" /><span name="message"></span><br />
 				</div>
 				<div  class="textfield">
 					<h:outputLabel value="Nachname: " for="inpf_surname01" /><br />
-					<h:inputText onfocus="validate(this)" value="#{newAccountController.user.surname}" id="inpf_surname01" /><br />
-					<span name="message"></span>
+					<h:inputText onfocus="validate(this)" value="#{newAccountController.user.surname}" id="inpf_surname01" /><span name="message"></span><br />
 				</div>
 				<div class="textfield">
 					<h:outputLabel value="Benutzername: " for="inpf_username01"/><br />
-					<h:inputText onfocus="validate(this)" value="#{newAccountController.user.username}" id="inpf_username01" /><br />
-					<span name="message"></span>
+					<h:inputText onfocus="validate(this)" value="#{newAccountController.user.username}" id="inpf_username01" /><span name="message"></span><br />
 				</div>
 				<div class="textfield">
 					<h:outputLabel value="Email-Adresse: " for="inpf_email01" /><br />
-					<h:inputText onfocus="validate(this)" value="#{newAccountController.user.email}" id="inpf_email01" /><br />
-					<span name="message"></span>
+					<h:inputText onfocus="validate(this)" value="#{newAccountController.user.email}" id="inpf_email01" /><span name="message"></span><br />
 				</div>
 				<div class="textfield">
 					<h:outputLabel value="Kennwort: " for="inpf_pwd01" /><br />
-					<h:inputSecret onfocus="validate(this)" value="#{newAccountController.user.first_password}" id="inpf_pwd01" /><br />
-					<span name="message"></span>
+					<h:inputSecret onfocus="validate(this)" value="#{newAccountController.user.first_password}" id="inpf_pwd01" /><span name="message"></span><br />
 				</div>
 				<div class="textfield">
 					<h:outputLabel value="Kennwort: " for="inpf_pwd02" /><br />
-					<h:inputSecret onfocus="validate(this)" value="#{newAccountController.user.second_password}" id="inpf_pwd02" /><br />
-					<span name="message"></span>
+					<h:inputSecret onfocus="validate(this)" value="#{newAccountController.user.second_password}" id="inpf_pwd02" /><span name="message"></span><br />
 				</div>
 				<div class="hidden">
 					<h:inputHidden id="inpf_hidden01" value="true"/>
@@ -52,8 +49,8 @@
 				</div>
 			</h:form>
 			</section>
-		</main>
-		<h:outputScript library="js" name="cfv.js" target="body" />
+		</div>
+		
 	</ui:define>
 </ui:composition>
 </html>

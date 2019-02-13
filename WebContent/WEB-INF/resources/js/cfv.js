@@ -12,142 +12,137 @@ var v = {};
 var _validator;
 var counter = 0;
 
- 
-var Validator = function(){
+
+var Validator = function () {
 	this.inputField = "";
 };
 
 Validator.prototype = {
-	setStrategy:function(inputField){
+	setStrategy: function (inputField) {
 		this.inputField = inputField;
 	},
-	
-	checkValidity:function(regex, id){
+
+	checkValidity: function (regex, id) {
 		return this.inputField.checkValidity(regex, id);
 	}
 };
 
-var DUMMY = function(){
-	this.checkValidity = function(regex, id){
+var DUMMY = function () {
+	this.checkValidity = function (regex, id) {
 		// Keine Funktionalitaet, nur als Platzhalter
 	}
 };
 
-var FORENAME = function(){
-	this.checkValidity = function(regex, id){
+var FORENAME = function () {
+	this.checkValidity = function (regex, id) {
 		var val = document.getElementById('frm_createNewAccount01:inpf_forename01').value;
-		
-		if(val == ""){
+
+		if (val == "") {
 			return;
 		}
-		
-		if(regex.test(val)){
+
+		if (regex.test(val)) {
 			document.getElementsByName('message')[1].innerHTML = 'Ok';
-		}else{
-			document.getElementById('frm_createNewAccount01:inpf_hidden01').value = 'inpf_forename01'; // wenn Fehlschlag -> schreibt fehlgeschlagene seinen namen in hidden
+		} else {
 			document.getElementsByName('message')[1].innerHTML = 'Vorname darf nur Kleinbuchstaben (a-z), Großbuchstaben (A-Z) und Leerzeichen enthalten';
 			document.getElementById('frm_createNewAccount01:inpf_forename01').focus();
 		}
 	}
 };
 
-var SURNAME = function(){
-	this.checkValidity = function(regex, id){
+var SURNAME = function () {
+	this.checkValidity = function (regex, id) {
 		var val = document.getElementById('frm_createNewAccount01:inpf_surname01').value;
-		
-		if(val == ""){
+
+		if (val == "") {
 			return;
 		}
-		
-		if(regex.test(val)){
+
+		if (regex.test(val)) {
 			document.getElementsByName('message')[2].innerHTML = 'Ok';
-		}else{
-			document.getElementById('frm_createNewAccount01:inpf_hidden01').value = 'inpf_surname01';
+		} else {
 			document.getElementsByName('message')[2].innerHTML = 'Nachname darf nur Kleinbuchstaben (a-z), Großbuchstaben (A-Z) und Bindestriche (-) enthalten';
 			document.getElementById('frm_createNewAccount01:inpf_surname01').focus();
 		}
 	}
 };
 
-var USERNAME = function(){
-	this.checkValidity = function(regex, id){
+var USERNAME = function () {
+	this.checkValidity = function (regex, id) {
 		var val = document.getElementById('frm_createNewAccount01:inpf_username01').value;
-		
-		if(val == ""){
+
+		if (val == "") {
 			document.getElementsByName('message')[3].innerHTML = 'Benutzername darf nur Kleinbuchstaben (a-z), Großbuchstaben (A-Z), Ziffer, underlines (_) und Bindestriche (-) enthalten';
 			document.getElementById('frm_createNewAccount01:inpf_username01').focus();
 			return;
 		}
-		
-		if(regex.test(val)){
+
+		if (regex.test(val)) {
 			document.getElementsByName('message')[3].innerHTML = 'Ok';
-		}else{
-			document.getElementById('frm_createNewAccount01:inpf_hidden01').value = 'inpf_username01';
+		} else {
 			document.getElementsByName('message')[3].innerHTML = 'Benutzername darf nur Kleinbuchstaben (a-z), Großbuchstaben (A-Z), Ziffer, underlines (_) und Bindestriche (-) enthalten';
 			document.getElementById('frm_createNewAccount01:inpf_username01').focus();
 		}
 	}
 };
 
-var EMAIL = function(){
-	this.checkValidity = function(regex, id){
+var EMAIL = function () {
+	this.checkValidity = function (regex, id) {
 		var val = document.getElementById('frm_createNewAccount01:inpf_email01').value;
-		
-		if(val == ""){
+
+		if (val == "") {
 			document.getElementById('frm_createNewAccount01:inpf_email01').focus();
 			return;
 		}
-		
-		
-		if(regex.test(val)){
+
+
+		if (regex.test(val)) {
 			document.getElementsByName('message')[4].innerHTML = 'Ok';
-		}else{
-			document.getElementById('frm_createNewAccount01:inpf_hidden01').value = 'inpf_email01';
+		} else {
 			document.getElementsByName('message')[4].innerHTML = 'Dies ist keine gültige E-mail Adresse';
 			document.getElementById('frm_createNewAccount01:inpf_email01').focus();
 		}
 	}
 };
 
-var PWD = function(){
-	this.checkValidity = function(regex, id){
+var PWD = function () {
+	this.checkValidity = function (regex, id) {
 		var val = "";
 		var indx = -1;
 		var elem = '';
-		
-		if(id == "frm_createNewAccount01:inpf_pwd02"){
+
+		if (id == "frm_createNewAccount01:inpf_pwd02") {
 			val = document.getElementById('frm_createNewAccount01:inpf_pwd01').value;
 			indx = 5;
 			elem = "frm_createNewAccount01:inpf_pwd01";
-		}else if(id == "frm_createNewAccount01:btn_submit01"){
+		} else if (id == "frm_createNewAccount01:btn_submit01") {
 			val = document.getElementById('frm_createNewAccount01:inpf_pwd02').value;
 			indx = 6;
 			elem = "frm_createNewAccount01:inpf_pwd02";
-		}else{
+		} else {
 			val = "";
 			indx = -1;
 			elem = '';
 		}
-		
-		if(val == ""){
+
+		if (val == "") {
 			document.getElementById(elem).focus();
 			return;
 		}
-		
-		if(regex.test(val)){
+
+		if (regex.test(val)) {
 			document.getElementsByName('message')[indx].innerHTML = 'Ok';
-		}else{
-			document.getElementById('frm_createNewAccount01:inpf_hidden01').value = id;
+		} else {
 			document.getElementsByName('message')[indx].innerHTML = 'Das Kennwort muss mindestens sechs Zeichen lang sein und: mindestens einen kleinen, einen großen Buchstaben enthalten und dazu noch eine Ziffer';
 			document.getElementById(elem).focus();
 			document.getElementsByName('message')[1].innerHTML = elem;
 		}
-		
+
 	}
 };
 
-	
-function initialize(){
+
+function initialize() {
 	regexs['frm_createNewAccount01:inpf_forename01'] = /^[a-zA-Z ]$/;
 	regexs['frm_createNewAccount01:inpf_surname01'] = /^[a-zA-Z -]{3,30}$/;
 	regexs['frm_createNewAccount01:inpf_username01'] = /^[a-zA-Z ]{3,30}$/;
@@ -155,7 +150,7 @@ function initialize(){
 	regexs['frm_createNewAccount01:inpf_pwd01'] = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	regexs['frm_createNewAccount01:inpf_pwd02'] = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z_]{6,30}$/;
 	regexs['frm_createNewAccount01:btn_submit01'] = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z_]{6,30}$/;
-	
+
 	v['frm_createNewAccount01:inpf_forename01'] = new DUMMY();
 	v['frm_createNewAccount01:inpf_surname01'] = new FORENAME();
 	v['frm_createNewAccount01:inpf_username01'] = new SURNAME();
@@ -163,52 +158,54 @@ function initialize(){
 	v['frm_createNewAccount01:inpf_pwd01'] = new EMAIL();
 	v['frm_createNewAccount01:inpf_pwd02'] = new PWD();
 	v['frm_createNewAccount01:btn_submit01'] = new PWD();
-	
+
 	_validator = new Validator();
-	
-};
-	
-function validate(elem){
-	if(_validator == undefined){
-		initialize();
-	}
-	
-	document.getElementsByName('message')[0].innerHTML = regexs[elem.id];
-	_validator.setStrategy(v[elem.id]);
-	_validator.checkValidity(regexs[elem.id], elem.id);
-	
+
 };
 
-function setupSubmit(){
+function validate(elem) {
+	if (_validator == undefined) {
+		initialize();
+	}
+
+	//document.getElementsByName('message')[0].innerHTML = regexs[elem.id];
+	_validator.setStrategy(v[elem.id]);
+	_validator.checkValidity(regexs[elem.id], elem.id);
+
+};
+
+function setupSubmit() {
 	/*
 	 * 	1. check if hidden is still true
 	 * 	2. vergleiche pwds
 	 * 	2. encode pwd fields
 	 */
-	 var errId = "";
-	 var hashedPWD = "";
-	 var hidValue = document.getElementById('frm_createNewAccount01:inpf_hidden01').value;
-	 document.getElementsByName('message')[0].innerHTML = hidValue;
-	 
-	 if(hidValue == "true"){
-		 var pwd01 = document.getElementById('frm_createNewAccount01:inpf_pwd01').value;
-		 var pwd02 = document.getElementById('frm_createNewAccount01:inpf_pwd02').value;
+	
+	var pwd01 = document.getElementById('frm_createNewAccount01:inpf_pwd01').value;
+	var pwd02 = document.getElementById('frm_createNewAccount01:inpf_pwd02').value;
 
-		 if(pwd01 == pwd02){
-			 hashedPWD = sha256(pwd01);
-			 document.getElementById('frm_createNewAccount01:inpf_pwd01').value = hashedPWD;
-			 document.getElementById('frm_createNewAccount01:inpf_pwd02').value = hashedPWD;
-			 document.getElementById('frm_createNewAccount01:inpf_hidden01').value = hashedPWD;
-			 return true;
-		 }else{
-			 document.getElementsByName('message')[5].innerHTML = "Kennwort muss uebereinstimmen";
-			 return false;
-		 }
-		 
-	 }else{
-		 errId = document.getElementById('frm_createNewAccount01:inpf_hidden01').value;
-		 document.getElementById('message')[0].innerHTML = 'Inhalt von ' + errId + " ist Problematisch";
-		 return false;
-	 }
-	 
+	if(pwd01 == "") {
+		document.getElementsByName('message')[5].innerHTML = "Dieses Feld darf nicht leer bleiben";
+		return false;
+	}
+
+	if (pwd01 == pwd02) {
+		document.getElementById('frm_createNewAccount01:inpf_pwd01').value = sha256(pwd01);
+		document.getElementById('frm_createNewAccount01:inpf_pwd02').value = sha256(pwd02);
+
+		document.getElementById('frm_createNewAccount01:inpf_hidden01').value = "true";
+
+		// naechste drei Zeilen sind dafuer da, um zu gucken, ob es richtig lauft... spaeter loeschen
+		//pwd01 = document.getElementById('frm_createNewAccount01:inpf_pwd01').value;
+		//pwd02 = document.getElementById('frm_createNewAccount01:inpf_pwd02').value;
+		//document.getElementsByName('message')[0].innerHTML = sha256(pwd02);
+
+		return true;
+	} else {
+		document.getElementsByName('message')[6].innerHTML = "Kennwoerter mussen uebereinstimmen";
+		return false;
+	}
+
+
+
 }
