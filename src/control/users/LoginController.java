@@ -2,11 +2,13 @@ package control.users;
 
 import java.io.Serializable;
 
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.servlet.http.HttpSession;
 
 import control.login.AttSettLogChain;
@@ -32,7 +34,7 @@ public class LoginController implements Serializable {
 	}
 
 	public String makeLogin() {
-		System.out.println(pwd);
+		System.out.println("Ich mache gerade login mit diesem password: " + pwd);
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		StorageManager storageManager = new StorageManager();
 
@@ -48,9 +50,28 @@ public class LoginController implements Serializable {
 			context.addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), "verstehe nicht wozu das hier dient?"));
 			
-			return "login";
+			return "login?faces-redirect=true";
 		}
 
+		return "home?faces-redirect=true";
+	}
+	
+	public String makeLogout() {
+		// man sollte Session in DB deleten und.. evtl session-Variable reseten
+		HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("net.sofware-development");
+		EntityManager em = emf.createEntityManager();
+		Integer userId = (Integer)session.getAttribute("user_id");
+		User user = em.find(User.class, userId);
+		
+		em.getTransaction().begin();
+		user.setSessionID(null);
+		em.getTransaction().commit();
+		em.close();
+		
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		
 		return "home";
 	}
 

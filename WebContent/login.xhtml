@@ -12,10 +12,10 @@
 	<ui:define name="content">
 	
 		<h:outputScript library="js" name="sha256.js" target="head"/>
-		<h:outputScript library="js" name="login.js" target="head"/>
+		<h:outputScript library="js" name="encodePWD.js" target="head"/>
 		<div class="content">
 			<section>
-				<h:form id="login_form">
+				<h:form id="login_form" onsubmit="return encodeUserPwd()">
 					<h:messages errorStyle="color:red"/>
 					<div class="textfield">
 						<h:outputLabel for="user_login_name" value="E-Mail: "/>
@@ -26,7 +26,7 @@
 						<h:inputSecret id="user_password" name="user_password" value="#{login.pwd}"/>
 					</div>
 					<div class="submit_btn">
-						<h:commandButton id="btn_login" name="btn_login" value="Anmelden" action="#{login.makeLogin()}" onclick="encodeUserPwd(this)"/>
+						<h:commandButton id="btn_login" name="btn_login" value="Anmelden" action="#{login.makeLogin()}" />
 					</div>
 				</h:form>
 			</section>

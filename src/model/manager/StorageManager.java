@@ -34,16 +34,18 @@ public class StorageManager implements Serializable {
 
 		try {
 			user = storage.execute(em);
+			
+			if(em.isOpen())
+				em.close();
+			
+			return user;
+			
 		} catch (NoMatchUserException e) {
 			if(em.isOpen())
 				em.close();
 			throw new LoginFailureException(e.getMessage());
 		}
 
-		if(em.isOpen())
-			em.close();
-		
-		return user;
 	}
 
 	public void setNextOperation(Touchable storage) {

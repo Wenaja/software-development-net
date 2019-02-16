@@ -67,26 +67,24 @@ public class NewAccountController implements Serializable{
 		System.out.println("Erstes Kennwort: " + user.getFirst_password());
 		System.out.println("zweites Kennwort: " + user.getSecond_password());
 		
-		return "home";
-		
-		/*if(!isUserExist()) {
+		if(!isUserExist()) {
 			User youngUser = new User();
 			
 			youngUser.setForename(user.getForename());
 			youngUser.setSurname(user.getSurname());
 			youngUser.setUsername(user.getUsername());
 			youngUser.setEmail(user.getEmail());
-			youngUser.setActive(new Boolean(false));
+			youngUser.setActive(new Boolean(true));
 			youngUser.setPwd(user.getSecond_password());
 			
 			em.getTransaction().begin();
 			em.persist(youngUser);
 			em.getTransaction().commit();
 			
-			return "NewAccountErgs";
+			return "NewAccountErgs?faces-redirect=true";
 		}else {
-			return "NewAccountFail";
-		}*/
+			return "NewAccountFail?faces-redirect=true";
+		}
 		
 	}
 }

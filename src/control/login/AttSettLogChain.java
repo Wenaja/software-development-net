@@ -23,7 +23,7 @@ public class AttSettLogChain extends LoginChain {
 
 	@Override
 	public Touchable getTouchable(HttpSession session, User user) throws LoginFailureException {
-		if (pwd.equals(user.getPwd())) {
+		if (user.getActive()) {
 			return new AttributeSetter(user.getId());
 		}
 

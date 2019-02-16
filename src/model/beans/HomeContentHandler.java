@@ -1,4 +1,4 @@
-package model.bean;
+package model.beans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,17 +15,17 @@ import model.manager.JPAArticleEntrance;
 import model.manager.JSFArticleEntrance;
 import model.manager.StorageManager;
 
-@ManagedBean
+@ManagedBean(name = "homePage")
 @RequestScoped
-public class ContentHandler implements Serializable {
+public class HomeContentHandler implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	ArticleManager artMan;
+	private ArticleManager artMan;
 
-	public ContentHandler() {
+	public HomeContentHandler() {
 
 	}
 

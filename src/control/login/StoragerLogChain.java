@@ -24,7 +24,7 @@ public class StoragerLogChain extends LoginChain {
 
 	@Override
 	public Touchable getTouchable(HttpSession session, User user) throws LoginFailureException {
-		if (user.getActive()) {
+		if (pwd.equals(user.getPwd())) {
 			return new Storager(user.getId(), session.getId());
 		}
 

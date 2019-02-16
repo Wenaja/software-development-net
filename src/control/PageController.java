@@ -23,9 +23,9 @@ public class PageController implements Serializable {
 
 	public PageController() {
 		this.value = "Benutzerkonto erstellen";
-		this.outcome = "/createAccount.jsf";
+		this.outcome = "createAccount";
 		this.loginValue = "Anmelden";
-		this.loginOutcome = "/login.jsf";
+		this.loginOutcome = "login";
 	}
 
 	@PostConstruct
@@ -34,9 +34,9 @@ public class PageController implements Serializable {
 		
 		if(session.getAttribute("username") != null) {
 			value = "Abmelden";
-			outcome = "/logout.jsf";
+			outcome = "logout";
 			loginValue = (String)session.getAttribute("username");
-			loginOutcome = "/userSettings.jsf";
+			loginOutcome = "userSettings";
 		}
 		
 	}

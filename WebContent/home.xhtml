@@ -13,7 +13,7 @@
 		<div class="content">
 			<h1>Meine eigene Webseite.</h1>
 			<section>
-				<ui:repeat var="pageContent" value="#{contentHandler.IDEArticles}">
+				<ui:repeat var="pageContent" value="#{homePage.IDEArticles}">
 					<h:outputText value="#{pageContent.article}" escape="false" />
 				</ui:repeat>
 			</section>

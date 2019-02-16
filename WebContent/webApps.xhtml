@@ -11,11 +11,14 @@
 	<ui:define name="content">
 
 		<div class="content">
+			<h1>Java Web Applicationen</h1>
 			<section>
-				<h4><h:outputText value="{webapps}" /></h4>
-				<p><h:outputText value="Hier entsteht eine neue Internetseite." /></p>
+				<ui:repeat var="pageContent" value="#{webAppsPage.IDEArticles}">
+					<h:outputText value="#{pageContent.artcle}" escape="false" />
+				</ui:repeat>
+			</section>
+			<section>
 				<h:graphicImage library="img" name="Java_JDK_download.jpg" width="1024px" />
-				<p><h:outputText value="Java Web Application" /></p>		
 			</section>
 		</div>
 

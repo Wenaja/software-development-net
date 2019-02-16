@@ -109,20 +109,20 @@ var PWD = function () {
 	this.checkValidity = function (regex, id) {
 		var val = "";
 		var indx = -1;
-		var elem = '';
+		//var elem = '';
 
 		if (id == "frm_createNewAccount01:inpf_pwd02") {
 			val = document.getElementById('frm_createNewAccount01:inpf_pwd01').value;
 			indx = 5;
-			elem = "frm_createNewAccount01:inpf_pwd01";
+			//elem = "frm_createNewAccount01:inpf_pwd01";
 		} else if (id == "frm_createNewAccount01:btn_submit01") {
 			val = document.getElementById('frm_createNewAccount01:inpf_pwd02').value;
 			indx = 6;
-			elem = "frm_createNewAccount01:inpf_pwd02";
+			//elem = "frm_createNewAccount01:inpf_pwd02";
 		} else {
 			val = "";
 			indx = -1;
-			elem = '';
+			//elem = '';
 		}
 
 		if (val == "") {
@@ -135,7 +135,7 @@ var PWD = function () {
 		} else {
 			document.getElementsByName('message')[indx].innerHTML = 'Das Kennwort muss mindestens sechs Zeichen lang sein und: mindestens einen kleinen, einen großen Buchstaben enthalten und dazu noch eine Ziffer';
 			document.getElementById(elem).focus();
-			document.getElementsByName('message')[1].innerHTML = elem;
+			//document.getElementsByName('message')[1].innerHTML = elem;
 		}
 
 	}

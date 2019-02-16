@@ -18,7 +18,7 @@
 	    		<h:outputText value="Dauer der Sitzung: " />
 	    		<h:outputText value="#" />
 	    		<h:form>
-	    			<h:commandButton action="home" id="logout_btn" value="Sitzung beenden" />
+	    			<h:commandButton action="#{login.makeLogout()}" id="logout_btn" value="Sitzung beenden" />
 	    		</h:form>
 	    	</h:panelGrid>
 	    </div>
