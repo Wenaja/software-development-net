@@ -1,7 +1,6 @@
 package model.beans;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -15,20 +14,20 @@ import model.manager.JPAArticleEntrance;
 import model.manager.JSFArticleEntrance;
 import model.manager.StorageManager;
 
-@ManagedBean(name = "homePage")
+@ManagedBean(name = "ideTutorialPage")
 @RequestScoped
-public class HomeContentHandler implements Serializable {
+public class IdeTutorialContentBean implements Serializable {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private ArticleManager artMan = null;
 	
-	private ArticleManager artMan;
-
-	public HomeContentHandler() {
-
+	public IdeTutorialContentBean() {
+		
 	}
-
+	
 	@PostConstruct
 	public void initialize() {
 		StorageManager storMan = new StorageManager();
@@ -36,11 +35,16 @@ public class HomeContentHandler implements Serializable {
 		
 	}
 	
-	public List<Article> getIDEArticles() {
+	public List<Article> getIDEArticles(){
 		artMan.setArticleEntrance(new IDEArticleEntrance());
 		
 		return artMan.fillRecords(StorageManager.getEntityManager());
+	}
+	
+	public List<Article> getJPAArticles(){
+		artMan.setArticleEntrance(new JPAArticleEntrance());
 		
+		return artMan.fillRecords(StorageManager.getEntityManager());
 	}
 	
 	public List<Article> getJSFArticles() {
@@ -49,12 +53,4 @@ public class HomeContentHandler implements Serializable {
 		return artMan.fillRecords(StorageManager.getEntityManager());
 		
 	}
-	
-	public List<Article> getJPAArticles() {
-		artMan.setArticleEntrance(new JPAArticleEntrance());
-		
-		return artMan.fillRecords(StorageManager.getEntityManager());
-		
-	}
-
 }

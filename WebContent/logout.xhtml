@@ -18,7 +18,8 @@
 	    		<h:outputText value="Dauer der Sitzung: " />
 	    		<h:outputText value="#" />
 	    		<h:form>
-	    			<h:commandButton action="#{login.makeLogout()}" id="logout_btn" value="Sitzung beenden" />
+	    			<h:commandButton action="home?faces-redirect=true" id="back_btn01" value="Zurück zur Startseite"/>
+	    			<h:commandButton action="#{logoutBean.makeLogout()}" id="logout_btn01" value="Sitzung beenden" />
 	    		</h:form>
 	    	</h:panelGrid>
 	    </div>

@@ -34,7 +34,7 @@ public class LoginController implements Serializable {
 	}
 
 	public String makeLogin() {
-		System.out.println("Ich mache gerade login mit diesem password: " + pwd);
+		//System.out.println("Ich mache gerade login mit diesem password: " + pwd);
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		StorageManager storageManager = new StorageManager();
 
@@ -48,31 +48,12 @@ public class LoginController implements Serializable {
 			// Miss messge
 			FacesContext context = FacesContext.getCurrentInstance();
 			context.addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), "verstehe nicht wozu das hier dient?"));
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), "verstehe ich nicht wozu das hier dient"));
 			
-			return "login?faces-redirect=true";
+			return "login?faces-redirect=false";
 		}
 
 		return "home?faces-redirect=true";
-	}
-	
-	public String makeLogout() {
-		// man sollte Session in DB deleten und.. evtl session-Variable reseten
-		HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("net.sofware-development");
-		EntityManager em = emf.createEntityManager();
-		Integer userId = (Integer)session.getAttribute("user_id");
-		User user = em.find(User.class, userId);
-		
-		em.getTransaction().begin();
-		user.setSessionID(null);
-		em.getTransaction().commit();
-		em.close();
-		
-		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		
-		return "home";
 	}
 
 	public String getEmail() {

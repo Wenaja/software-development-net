@@ -28,8 +28,7 @@ public class StoragerLogChain extends LoginChain {
 			return new Storager(user.getId(), session.getId());
 		}
 
-		throw new LoginFailureException(
-				"Ihr Benutzerkonto wurde deaktiviert. Mit Ihren Fragen wenden Sie sich an den Anministrator.");
+		throw new LoginFailureException("Das von Ihnen eingegebenen Kennwort ist falsch!");
 	}
 
 }

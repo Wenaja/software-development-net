@@ -24,6 +24,7 @@ public class AttributeSetter implements Touchable {
 		User user = em.find(User.class, user_id);
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 
+		session.setAttribute("user_id", user.getId());
 		session.setAttribute("active", user.getActive());
 		session.setAttribute("email", user.getEmail());
 		session.setAttribute("forename", user.getForename());

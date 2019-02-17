@@ -27,7 +27,7 @@ public class AttSettLogChain extends LoginChain {
 			return new AttributeSetter(user.getId());
 		}
 
-		throw new LoginFailureException("Das von Ihnen eingegebenen Kennwort ist falsch!");
+		throw new LoginFailureException("Ihr Benutzerkonto wurde deaktiviert. Mit allen Fragen wenden Sie sich an den Anministrator.");
 	}
 
 }

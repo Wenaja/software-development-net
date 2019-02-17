@@ -12,20 +12,19 @@
 	    <div class="content">
 	    	<h:panelGrid columns="2">
 	    		<h:outputText value="Nachname: "/>
-	    		<h:outputText value=""/>
+	    		<h:outputText value="#{userSettings.surname}"/>
 	    		<h:outputText value="Vorname: "/>
-	    		<h:outputText value=""/>
+	    		<h:outputText value="#{userSettings.forename}"/>
 	    		<h:outputText value="Benutzername: "/>
-	    		<h:outputText value=""/>
+	    		<h:outputText value="#{userSettings.username}"/>
 	    		<h:outputText value="Email-Adresse: "/>
-	    		<h:outputText value=""/>
+	    		<h:outputText value="#{userSettings.email}"/>
 	    		<h:outputText value="Anzahl Kommentare: "/>
-	    		<h:outputText value=""/>
+	    		<h:outputText value="#{userSettings.numberComments}"/>
 	    		<h:outputText value="Benutzerkonto erstellt am: "/>
-	    		<h:outputText value=""/>
+	    		<h:outputText value="#{userSettings.accountCreatedOn}"/>
 	    		<h:form>
-	    			<h:commandButton action="home" id="back_btn" value="Zurück zur Startseite"/>
-	    			<h:commandButton action="home" id="logout_btn" value="Sintzung beenden"/>
+	    			<h:commandButton action="home?faces-redirect=true" id="btn_back01" value="Zurück zur Startseite"/>
 	    		</h:form>
 	    	</h:panelGrid>
 	    </div>
