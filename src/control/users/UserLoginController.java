@@ -21,7 +21,7 @@ import model.manager.StorageManager;
 
 @ManagedBean(name = "login")
 @SessionScoped
-public class LoginController implements Serializable {
+public class UserLoginController implements Serializable {
 	/**
 	 * 
 	 */
@@ -29,7 +29,7 @@ public class LoginController implements Serializable {
 	private String email;
 	private String pwd;
 
-	public LoginController() {
+	public UserLoginController() {
 
 	}
 

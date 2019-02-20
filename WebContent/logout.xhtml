@@ -8,22 +8,28 @@
 
 <ui:composition template="/template/stencil.xhtml">
 	<ui:define name="content">
-	    
-	    <div class="content">
-	    	<h:panelGrid columns="2">
-	    		<h:outputText value="Benutzername: "/>
-	    		<h:outputText value="#"/>
-	    		<h:outputText value="Anmeldezeit: " />
-	    		<h:outputText value="#" />
-	    		<h:outputText value="Dauer der Sitzung: " />
-	    		<h:outputText value="#" />
-	    		<h:form>
-	    			<h:commandButton action="home?faces-redirect=true" id="back_btn01" value="Zurück zur Startseite"/>
-	    			<h:commandButton action="#{logoutBean.makeLogout()}" id="logout_btn01" value="Sitzung beenden" />
-	    		</h:form>
-	    	</h:panelGrid>
-	    </div>
-	    
+
+		<div class="content">
+			<h:form>
+				<h:panelGrid columns="2">
+					<h:outputText value="Benutzername: " />
+					<h:outputText value="#{logoutBean.username}" />
+					<h:outputText value="Email-Adresse: " />
+					<h:outputText value="#{logoutBean.email}" />
+					<h:outputText value="Anmeldezeit: " />
+					<h:outputText value="#{logoutBean.loginTime}" />
+					<h:outputText value="Dauer der Sitzung: " />
+					<h:outputText value="#{logoutBean.loginDuration}" />
+
+					<h:commandButton action="home?faces-redirect=true" id="back_btn01"
+						value="Zurück zur Startseite" />
+					<h:commandButton action="#{logoutBean.makeLogout()}"
+						id="logout_btn01" value="Sitzung beenden" />
+
+				</h:panelGrid>
+			</h:form>
+		</div>
+
 	</ui:define>
 </ui:composition>
 </html>

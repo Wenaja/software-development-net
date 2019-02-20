@@ -1,6 +1,7 @@
-package model.beans;
+package model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -43,7 +44,7 @@ public class LogoutBean implements Serializable {
 	}
 
 	public String makeLogout() {
-		// man sollte Session in DB deleten und.. evtl session-Variable reseten
+		
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("net.software-development");
@@ -78,7 +79,8 @@ public class LogoutBean implements Serializable {
 	}
 
 	public String getLoginTime() {
-		return Long.toString(loginTime);
+		Date dt = new Date(loginTime);
+		return dt.toString();
 	}
 
 	public void setLoginTime(String loginTime) {

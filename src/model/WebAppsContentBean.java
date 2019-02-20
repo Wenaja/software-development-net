@@ -1,4 +1,4 @@
-package model.beans;
+package model;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,9 +14,9 @@ import model.manager.JPAArticleEntrance;
 import model.manager.JSFArticleEntrance;
 import model.manager.StorageManager;
 
-@ManagedBean(name = "ideTutorialPage")
+@ManagedBean(name = "webAppsPage")
 @RequestScoped
-public class IdeTutorialContentBean implements Serializable {
+public class WebAppsContentBean implements Serializable {
 
 	/**
 	 * 
@@ -24,7 +24,7 @@ public class IdeTutorialContentBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private ArticleManager artMan = null;
 	
-	public IdeTutorialContentBean() {
+	public WebAppsContentBean() {
 		
 	}
 	
@@ -32,7 +32,6 @@ public class IdeTutorialContentBean implements Serializable {
 	public void initialize() {
 		StorageManager storMan = new StorageManager();
 		artMan = new ArticleManager();
-		
 	}
 	
 	public List<Article> getIDEArticles(){
@@ -53,4 +52,5 @@ public class IdeTutorialContentBean implements Serializable {
 		return artMan.fillRecords(StorageManager.getEntityManager());
 		
 	}
+
 }
