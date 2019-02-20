@@ -33,9 +33,19 @@ public class LoginController implements Serializable {
 			doRedirect("login.jsf");
 		}
 	}
+	
+	public void verifyUser() {
+		try {
+			HttpSession session = getSession(getExtContext());
+			if (isLogged(session)) {
+				doRedirect("userSettings.jsf");
+			}
+		} catch (Exception e) {
+			doRedirect("userSettings.jsf");
+		}
+	}
 
 	private ExternalContext getExtContext() {
-
 		FacesContext fc = FacesContext.getCurrentInstance();
 
 		return fc.getExternalContext();

@@ -10,7 +10,7 @@
 <ui:composition template="/template/stencil.xhtml">
 	
 	<ui:define name="content">
-	
+	<f:event listener="#{loginController.verifyUser()}" type="preRenderView"></f:event>
 		<h:outputScript library="js" name="sha256.js" target="head"/>
 		<h:outputScript library="js" name="encodePWD.js" target="head"/>
 		<div class="content">
